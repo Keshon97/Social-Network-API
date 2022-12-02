@@ -1,4 +1,4 @@
-const {User, Thought} = require ('../models');
+const {User} = require ('../models');
 
 module.exports = {
     //get route to retrieve all users
