@@ -53,8 +53,14 @@ module.exports = {
   createReaction(req, res) {
     return Thought.findOneAndUpdate(
         {_id: req.params.thoughtId},
-      
+        {$addToSet: {reactions: req.body}},
         {new: true}
     )
-  }
+    .then((reactions) =>
+            !reactions
+                ? res.status(404).json({ message: 'No user with that Id' })
+                : res.json(reactions)
+        )
+        .catch((err) => res.status(500).json(err));
+    },
 };

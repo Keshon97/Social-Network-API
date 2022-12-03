@@ -55,7 +55,7 @@ module.exports = {
             {_id: req.params.userId},
             //the friend being added, added by id, adds friend virtual to array
             {$addToSet: {friends: req.params.friendId}},
-            {new: true}
+            {new: true},
             )
             .then((user) =>
             !user
